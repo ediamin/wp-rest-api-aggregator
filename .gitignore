@@ -1,0 +1,9 @@
+# Operating system related
+.DS_Store
+Thumbs.db
+
+# IDE/Code Editor
+.vscode
+
+# Dev environment
+vendor

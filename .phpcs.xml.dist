@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<ruleset name="WPRestApiAggregator" namespace="WPRestApiAggregator">
+    <description>PHP code sniffer configuration for WP REST API Aggregator plugin</description>
+
+    <!-- Exclude paths -->
+    <exclude-pattern>*/node_modules/*</exclude-pattern>
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+
+    <!-- args -->
+    <arg value="p"/>
+    <arg value="s"/>
+    <arg name="parallel" value="20"/>
+
+    <!-- Configs -->
+    <config name="minimum_supported_wp_version" value="5.0"/>
+    <config name="testVersion" value="7.4-"/>
+
+    <!-- PHPCompatibility -->
+    <rule ref="PHPCompatibilityWP"/>
+
+    <!-- Use PSR-12 as baseline standard -->
+    <rule ref="PSR12">
+        <!-- Prefer WordPress standards -->
+        <exclude name="PSR1.Methods.CamelCapsMethodName.NotCamelCaps"/>
+        <exclude name="PSR2.Methods.FunctionCallSignature.SpaceAfterOpenBracket"/>
+        <exclude name="PSR2.Methods.FunctionCallSignature.SpaceBeforeCloseBracket"/>
+        <exclude name="PSR12.ControlStructures.ControlStructureSpacing.SpacingAfterOpenBrace"/>
+        <exclude name="PSR12.ControlStructures.ControlStructureSpacing.SpaceBeforeCloseBrace"/>
+    </rule>
+
+    <rule ref="PSR1.Files.SideEffects.FoundWithSymbols">
+        <exclude-pattern>wp-rest-api-aggregator.php</exclude-pattern>
+    </rule>
+    <rule ref="PSR12.Files.FileHeader.SpacingAfterBlock">
+        <exclude-pattern>wp-rest-api-aggregator.php</exclude-pattern>
+    </rule>
+
+    <!-- WordPress -->
+    <rule ref="WordPress-Core">
+        <exclude name="Generic.WhiteSpace.DisallowSpaceIndent"/>
+        <exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
+        <exclude name="Generic.Classes.OpeningBraceSameLine.BraceOnNewLine"/>
+        <exclude name="Generic.Functions.OpeningFunctionBraceKernighanRitchie.BraceOnNewLine"/>
+
+        <exclude name="WordPress.PHP.YodaConditions.NotYoda"/>
+        <exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+        <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
+        <exclude name="WordPress.WhiteSpace.ControlStructureSpacing.ExtraSpaceAfterCloseParenthesis"/>
+    </rule>
+
+    <rule ref="WordPress-Extra"/>
+	<rule ref="WordPress-VIP-Go" />
+	<rule ref="WordPressVIPMinimum" />
+
+    <rule ref="WordPress.WP.I18n">
+        <properties>
+            <property name="text_domain" type="array" value="wp-rest-api-aggregator"/>
+        </properties>
+    </rule>
+
+    <rule ref="WordPress-Docs">
+        <exclude name="Squiz.Commenting.FileComment.Missing"/>
+        <exclude name="Squiz.Commenting.FileComment.MissingPackageTag"/>
+    </rule>
+
+    <!-- Inline comments must starts with capital letter. -->
+    <rule ref="Squiz.Commenting.InlineComment.NotCapital">
+        <severity>5</severity>
+    </rule>
+
+    <!-- Do not allow array() syntax. Use [] instead. -->
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"></rule>
+
+    <!-- Enforce PascalCase file names in src/ only. -->
+    <rule ref="Squiz.Classes.ClassFileName"/>
+
+    <!-- Limit maximum consecutive blank lines to 1 between the class methods. -->
+    <rule ref="Squiz.WhiteSpace.FunctionSpacing">
+        <properties>
+            <property name="spacing" value="1"/>
+            <property name="spacingBeforeFirst" value="0"/>
+            <property name="spacingAfterLast" value="0"/>
+        </properties>
+    </rule>
+</ruleset>

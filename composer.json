@@ -1,0 +1,24 @@
+{
+    "name": "ediamin/wp-rest-api-aggregator",
+    "description": "Get multiple WordPress REST API response in a single request.",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "php": "^7.4"
+    },
+    "require-dev": {
+        "phpcompatibility/phpcompatibility-wp": "^2.1",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
+        "wp-coding-standards/wpcs": "^2.3",
+        "automattic/vipwpcs": "^2.3",
+        "slevomat/coding-standard": "^8.3"
+    },
+    "scripts": {
+        "phpcs": [
+            "phpcs"
+        ],
+        "phpcbf": [
+            "phpcbf -p"
+        ]
+    }
+}
